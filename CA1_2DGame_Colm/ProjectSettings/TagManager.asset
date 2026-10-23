@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - PlayerProjectile
+  - Enemy
+  - enemyProjectile
   layers:
   - Default
   - TransparentFX
@@ -11,14 +14,14 @@ TagManager:
   - 
   - Water
   - UI
-  - Tilemap
-  - 
+  - Ground
+  - Structure
   - 
   - Player
-  - 
-  - 
-  - 
-  - 
+  - collectible
+  - PlayerProjectile
+  - Enemy
+  - EnemyProjectile
   - 
   - 
   - 
@@ -44,11 +47,17 @@ TagManager:
   - name: ground
     uniqueID: 3047620951
     locked: 0
+  - name: structures
+    uniqueID: 3612944069
+    locked: 0
+  - name: Projectile
+    uniqueID: 223333689
+    locked: 0
   - name: Player
     uniqueID: 239646213
     locked: 0
-  - name: structures
-    uniqueID: 3612944069
+  - name: collectible
+    uniqueID: 1575543401
     locked: 0
   m_RenderingLayers:
   - Default

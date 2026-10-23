@@ -3,6 +3,7 @@ using UnityEngine;
 public class Collectible : MonoBehaviour
 {
     [SerializeField] public Player player;
+    [SerializeField] public Enemy enemy;
     public int direction = 1;
     private float height = .3f;
     private float timePassed = 0;
@@ -32,6 +33,12 @@ public class Collectible : MonoBehaviour
         {
             Destroy(gameObject);
             player.CollectFlame();
+        }
+
+        if (collision.name == "Enemy")
+        {
+            Destroy(gameObject);
+            enemy.CollectFlame();
         }
 
     }

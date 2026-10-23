@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7930649261001122318}
   - component: {fileID: 8193805681477069602}
   - component: {fileID: 4116583225161157058}
-  m_Layer: 7
+  m_Layer: 10
   m_Name: FireballCollectible
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,7 +36,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &7930649261001122318
 SpriteRenderer:
-  serializedVersion: 3
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -79,8 +79,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 74013035
-  m_SortingLayer: 5
+  m_SortingLayerID: 1575543401
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -1646067306854321334, guid: f9bc380ad47cafd45a79b9073874a24c, type: 3}
@@ -93,7 +93,6 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
-  m_BlendShapeWeights: []
 --- !u!114 &8193805681477069602
 MonoBehaviour:
   m_ObjectHideFlags: 0

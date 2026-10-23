@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 6857057672060451079}
   - component: {fileID: 7072107299156513731}
   - component: {fileID: 7302703311859334101}
-  m_Layer: 9
+  m_Layer: 11
   m_Name: FireballProjectile
-  m_TagString: Untagged
+  m_TagString: PlayerProjectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -37,7 +37,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &4228991568250979573
 SpriteRenderer:
-  serializedVersion: 3
+  serializedVersion: 2
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -80,8 +80,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 74013035
-  m_SortingLayer: 5
+  m_SortingLayerID: 223333689
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -6082981705396555746, guid: ec9cb967131efda4e8b1b946e995eef4, type: 3}
@@ -89,12 +89,11 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.314, y: 0.62666667}
+  m_Size: {x: 7.76, y: 7.61}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_SpriteSortPoint: 0
-  m_BlendShapeWeights: []
 --- !u!50 &6857057672060451079
 Rigidbody2D:
   serializedVersion: 5
@@ -121,7 +120,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 6
 --- !u!114 &7072107299156513731
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -172,8 +171,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.314, y: 0.62666667}
-    newSize: {x: 1.314, y: 0.62666667}
+    oldSize: {x: 0.5173333, y: 0.50733334}
+    newSize: {x: 7.76, y: 7.61}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0

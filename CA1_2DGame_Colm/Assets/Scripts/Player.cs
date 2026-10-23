@@ -12,13 +12,20 @@ public class Player : MonoBehaviour
     private int direction = 1;
     private Vector2 move;
     public float speed = 0.5f;
-    public int score = 0;
+    public int playerFlameCount = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+    }
+    private void Fire()
+    {
+        GameObject go = Instantiate(projectilePrefab, rb.transform.position, Quaternion.identity);
+        Projectile pro = go.GetComponent<Projectile>();
+        pro.Launch(new Vector2(-direction, 0), 600);
+        playerFlameCount--;
     }
 
     // Update is called once per frame
@@ -32,11 +39,12 @@ public class Player : MonoBehaviour
         }
         animator.SetFloat("move", move.x);
 
-        if (InputSystem.actions["Attack"].IsPressed())
+        if (InputSystem.actions["Attack"].IsPressed() && playerFlameCount > 0)
         {
             InputSystem.actions["Attack"].Reset();
             Fire();
         }
+
     }
 
     void FixedUpdate()
@@ -48,12 +56,8 @@ public class Player : MonoBehaviour
     }
 
     public void CollectFlame() {
-        score++;
+        playerFlameCount++;
     }
 
-    private void Fire() {
-        GameObject go = Instantiate(projectilePrefab, rb.transform.position, Quaternion.identity);
-        Projectile pro = go.GetComponent<Projectile>();
-        pro.Launch(new Vector2(-direction, 0), 600);
-    }
+    
 }
