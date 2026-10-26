@@ -35,11 +35,11 @@ public class Collectible : MonoBehaviour
             player.CollectFlame();
         }
 
-        if (collision.name == "Enemy")
-        {
-            Destroy(gameObject);
-            enemy.CollectFlame();
-        }
+        //if (collision.name == "Enemy")
+        //{
+        //    Destroy(gameObject);
+        //    enemy.EnemyCollectFlame();
+        //}
 
     }
 }
