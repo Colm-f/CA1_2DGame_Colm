@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
 {
     [SerializeField] public GameObject projectilePrefab;
     [SerializeField] private GameManager gm;
+    [SerializeField] public Enemy enemy;
+    [SerializeField] private Goal goal;
     private Rigidbody2D rb;
     private Animator animator;
     private float inputX, inputY;
@@ -17,7 +19,12 @@ public class Player : MonoBehaviour
     private Vector2 move;
     public float speed = 0.5f;
     public int playerFlameCount = 0;
+    public int playerOrbCount = 0;
     private int lives = 3;
+    private bool isInvincible;
+    private float invincibleTime;
+    private AudioSource aSource;
+    private bool playing = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,7 +36,12 @@ public class Player : MonoBehaviour
     public void CollectFlame()
     {
         playerFlameCount++;
-        gm.UpdateScore(playerFlameCount);
+        gm.UpdateFlameScore(playerFlameCount);
+    }
+
+    public void CollectOrb() {
+        playerOrbCount++;
+        gm.UpdateOrbScore(playerOrbCount);
     }
 
     private void Fire()
@@ -38,7 +50,7 @@ public class Player : MonoBehaviour
         Projectile pro = go.GetComponent<Projectile>();
         pro.Launch(new Vector2(-direction, 0), 600);
         playerFlameCount--;
-        gm.UpdateScore(playerFlameCount);
+        gm.UpdateFlameScore(playerFlameCount);
     }
 
     // Update is called once per frame
@@ -51,6 +63,19 @@ public class Player : MonoBehaviour
             animator.SetInteger("direction", direction);
         }
         animator.SetFloat("move", move.x);
+        
+        if (move.x != 0 && !playing) {
+            aSource.Play();
+            playing = true;
+        }
+        if (move.x == 0 && playing) {
+            aSource.Pause();
+            playing = false;
+        }
+        else if (move.x != 0 && playing) {
+            aSource.UnPause();
+            playing = true;
+        }
 
         if (InputSystem.actions["Attack"].IsPressed() && playerFlameCount > 0)
         {
@@ -58,17 +83,28 @@ public class Player : MonoBehaviour
             Fire();
         }
 
+        if (isInvincible) {
+            invincibleTime += Time.deltaTime;
+
+            if (invincibleTime > 1f) {
+                isInvincible = false;
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == "EnemyProjectile")
+        if (collision.gameObject.tag == "Enemy")
         {
-            lives--;
-            gm.UpdateLives(lives);
-            //if (lives == 0)
-            //{
-            //    SceneManager.LoadScene("Menu");
-            //}
+            if (!isInvincible) { 
+                lives--;
+                gm.UpdateLives(lives);
+                isInvincible = true;
+            }
+
+            if (lives <= 0)
+            {
+                SceneManager.LoadScene("Death");
+            }
         }
 
         if (collision.gameObject.GetComponent<Projectile>() != null)

@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - enemyProjectile
   - Fireball
+  - goal
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - PlayerProjectile
   - Enemy
   - EnemyProjectile
-  - 
+  - Goal
   - 
   - 
   - 

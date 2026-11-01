@@ -1,19 +1,30 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public Text FireballsCollected;
+    public TMP_Text OrbsCollected;
     [SerializeField] Player player;
     [SerializeField] Image[] images;
 
-    private void Start()
+    void Start()
     {
-        FireballsCollected.text = player.playerFlameCount.ToString();
+
     }
-    public void UpdateScore(int playerFlameCount)
+
+    void Update() 
+    {
+        
+    }
+    public void UpdateFlameScore(int playerFlameCount)
     {
         FireballsCollected.text = playerFlameCount.ToString();
+    }
+
+    public void UpdateOrbScore(int playerOrbCount) {
+        OrbsCollected.text = playerOrbCount.ToString();
     }
 
     public void UpdateLives(int lives)
@@ -35,7 +46,7 @@ public class GameManager : MonoBehaviour
                 images[1].enabled = true;
                 images[2].enabled = true;
                 break;
-            case 4:
+            case 3:
                 images[0].enabled = true;
                 images[1].enabled = true;
                 images[2].enabled = true;
