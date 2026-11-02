@@ -9,6 +9,7 @@ using UnityEngine.Rendering;
 public class Player : MonoBehaviour
 {
     [SerializeField] public GameObject projectilePrefab;
+    [SerializeField] public GameObject hammerPrefab;
     [SerializeField] private GameManager gm;
     [SerializeField] public Enemy enemy;
     [SerializeField] private Goal goal;
@@ -25,6 +26,7 @@ public class Player : MonoBehaviour
     private float invincibleTime;
     private AudioSource aSource;
     private bool playing = false;
+    private bool destroy = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,6 +46,17 @@ public class Player : MonoBehaviour
         gm.UpdateOrbScore(playerOrbCount);
     }
 
+    public void Heal() {
+        if (!isInvincible) { 
+            lives++;
+            gm.UpdateLives(lives);
+        }
+    }
+
+    public void CollectHammer() {
+        destroy = true;
+    }
+
     private void Fire()
     {
         GameObject go = Instantiate(projectilePrefab, rb.transform.position, Quaternion.identity);
@@ -51,6 +64,11 @@ public class Player : MonoBehaviour
         pro.Launch(new Vector2(-direction, 0), 600);
         playerFlameCount--;
         gm.UpdateFlameScore(playerFlameCount);
+    }
+    private void FireHammer() {
+        GameObject go = Instantiate(hammerPrefab, rb.transform.position, Quaternion.identity);
+        HammerProjectile pro = go.GetComponent<HammerProjectile>();
+        pro.Launch(new Vector2(-direction, 0), 600);
     }
 
     // Update is called once per frame
@@ -82,6 +100,9 @@ public class Player : MonoBehaviour
             InputSystem.actions["Attack"].Reset();
             Fire();
         }
+        if (Input.GetKeyDown(KeyCode.F) && destroy) {
+            FireHammer();
+        }
 
         if (isInvincible) {
             invincibleTime += Time.deltaTime;
@@ -105,11 +126,6 @@ public class Player : MonoBehaviour
             {
                 SceneManager.LoadScene("Death");
             }
-        }
-
-        if (collision.gameObject.GetComponent<Projectile>() != null)
-        {
-            rb.linearVelocity = new Vector2(0, 0);
         }
     }
 

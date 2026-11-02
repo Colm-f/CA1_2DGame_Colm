@@ -7,9 +7,7 @@ public class Enemy : MonoBehaviour
     public float speed;
     public float distance;
     private Rigidbody2D rb;
-    public bool isInvincible = false;
-    private float invincibleCount;
-    public int strength = 3;
+    public int strength = 2;
 
     void Start()
     {
@@ -24,15 +22,6 @@ public class Enemy : MonoBehaviour
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
-
-        if (isInvincible)
-        {
-            invincibleCount += Time.deltaTime;
-            if (invincibleCount > 1f)
-            {
-                isInvincible = false;
-            }
-        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -46,15 +35,10 @@ public class Enemy : MonoBehaviour
 
     private void Hit()
     {
-        if (!isInvincible)
+        strength--;
+        if (strength <= 0)
         {
-            strength--;
-            if (strength <= 0)
-            {
-                Destroy(this.gameObject);
-            }
-
-            isInvincible = true;
+            Destroy(this.gameObject);
         }
 
     }

@@ -141,5 +141,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85e8c033e3a17444483a433ffed51fd2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::OrbCollectible
-  player: {fileID: 0}
+  player: {fileID: 9143789494133923093, guid: 63c16a2002fb9d0499336f3d9d473fb4, type: 3}
   direction: 1

@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c53b5a8612ecd747a99e87f04438271, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
-  player: {fileID: 0}
+  player: {fileID: 6697771860730132174, guid: 63c16a2002fb9d0499336f3d9d473fb4, type: 3}
   speed: 3
   distance: 0
   isInvincible: 0

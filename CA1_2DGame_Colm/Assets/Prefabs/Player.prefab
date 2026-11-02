@@ -203,9 +203,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player
   projectilePrefab: {fileID: 7660298389119906588, guid: 6c002fec68947134ea4d62976653093b, type: 3}
+  hammerPrefab: {fileID: 5341205978790860845, guid: 8dd706a019ed68742a18490f7b8d9708, type: 3}
   gm: {fileID: 0}
-  enemy: {fileID: 0}
-  goal: {fileID: 0}
+  enemy: {fileID: 6668301547325783040, guid: f823541c12911a64ca8d3c330aad8122, type: 3}
+  goal: {fileID: 7971505855036985483, guid: 1a4bdcc11ec031d49a8170a1b23cab9e, type: 3}
   speed: 0.09
   playerFlameCount: 0
   playerOrbCount: 0

@@ -151,4 +151,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f3261f94ee8df9645a9d8d394c58de3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Goal
-  player: {fileID: 0}
+  player: {fileID: 9143789494133923093, guid: 63c16a2002fb9d0499336f3d9d473fb4, type: 3}
