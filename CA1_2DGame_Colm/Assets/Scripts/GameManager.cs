@@ -4,7 +4,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public Text FireballsCollected;
+    public TMP_Text FireballsCollected;
     public TMP_Text OrbsCollected;
     [SerializeField] Player player;
     [SerializeField] Image[] images;

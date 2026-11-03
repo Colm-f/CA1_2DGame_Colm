@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private AudioSource aSource;
     private bool playing = false;
     private bool destroy = false;
+    private bool isDead = false;
+    private float deathTime = 0;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -83,15 +85,15 @@ public class Player : MonoBehaviour
         animator.SetFloat("move", move.x);
         
         if (move.x != 0 && !playing) {
-            aSource.Play();
+            //aSource.Play();
             playing = true;
         }
         if (move.x == 0 && playing) {
-            aSource.Pause();
+            //aSource.Pause();
             playing = false;
         }
         else if (move.x != 0 && playing) {
-            aSource.UnPause();
+            //aSource.UnPause();
             playing = true;
         }
 
@@ -111,6 +113,18 @@ public class Player : MonoBehaviour
                 isInvincible = false;
             }
         }
+
+        if (lives <= 0)
+        {
+            isDead = true;
+            animator.SetBool("dead", isDead);
+
+            deathTime += Time.deltaTime;
+            if (deathTime > 1f)
+            {
+                SceneManager.LoadScene("Death");
+            }
+        }
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -120,11 +134,6 @@ public class Player : MonoBehaviour
                 lives--;
                 gm.UpdateLives(lives);
                 isInvincible = true;
-            }
-
-            if (lives <= 0)
-            {
-                SceneManager.LoadScene("Death");
             }
         }
     }
