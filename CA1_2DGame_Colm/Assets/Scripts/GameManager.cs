@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -8,10 +9,11 @@ public class GameManager : MonoBehaviour
     public TMP_Text OrbsCollected;
     [SerializeField] Player player;
     [SerializeField] Image[] images;
+    [SerializeField] Image hammer;
 
     void Start()
     {
-
+        hammer.enabled = false;
     }
 
     void Update() 
@@ -25,6 +27,10 @@ public class GameManager : MonoBehaviour
 
     public void UpdateOrbScore(int playerOrbCount) {
         OrbsCollected.text = playerOrbCount.ToString();
+    }
+
+    public void showHammer() {
+        hammer.enabled = true;
     }
 
     public void UpdateLives(int lives)
