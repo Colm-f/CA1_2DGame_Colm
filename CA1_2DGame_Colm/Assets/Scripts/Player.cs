@@ -29,6 +29,8 @@ public class Player : MonoBehaviour
     private bool destroy = false;
     private bool isDead = false;
     private float deathTime = 0;
+    private bool down = false;
+    private bool up = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -57,6 +59,7 @@ public class Player : MonoBehaviour
 
     public void CollectHammer() {
         destroy = true;
+        gm.showHammer();
     }
 
     private void Fire()
@@ -105,6 +108,24 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F) && destroy) {
             FireHammer();
         }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            down = true;
+            animator.SetBool("down", down);
+        }
+        else {
+            down = false;
+            animator.SetBool("up", up);
+        }
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            up = true;
+            animator.SetBool("up", up);
+        }
+        else {
+            up = false;
+            animator.SetBool("up", up);
+        }
 
         if (isInvincible) {
             invincibleTime += Time.deltaTime;
@@ -120,7 +141,7 @@ public class Player : MonoBehaviour
             animator.SetBool("dead", isDead);
 
             deathTime += Time.deltaTime;
-            if (deathTime > 1f)
+            if (deathTime > 2f)
             {
                 SceneManager.LoadScene("Death");
             }
