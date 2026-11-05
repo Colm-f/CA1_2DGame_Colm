@@ -37,6 +37,7 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        aSource = GetComponent<AudioSource>();
     }
     
     public void CollectFlame()
@@ -88,15 +89,15 @@ public class Player : MonoBehaviour
         animator.SetFloat("move", move.x);
         
         if (move.x != 0 && !playing) {
-            //aSource.Play();
+            aSource.Play();
             playing = true;
         }
         if (move.x == 0 && playing) {
-            //aSource.Pause();
+            aSource.Pause();
             playing = false;
         }
         else if (move.x != 0 && playing) {
-            //aSource.UnPause();
+            aSource.UnPause();
             playing = true;
         }
 
@@ -107,24 +108,6 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.F) && destroy) {
             FireHammer();
-        }
-        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        {
-            down = true;
-            animator.SetBool("down", down);
-        }
-        else {
-            down = false;
-            animator.SetBool("up", up);
-        }
-        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            up = true;
-            animator.SetBool("up", up);
-        }
-        else {
-            up = false;
-            animator.SetBool("up", up);
         }
 
         if (isInvincible) {
@@ -165,6 +148,27 @@ public class Player : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
 
         transform.Translate(inputX * speed, inputY * speed, 0f);
+
+        //if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        //{
+        //    down = true;
+        //    animator.SetBool("down", down);
+        //}
+        //else
+        //{
+        //    down = false;
+        //    animator.SetBool("up", up);
+        //}
+        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        //{
+        //    up = true;
+        //    animator.SetBool("up", up);
+        //}
+        //else
+        //{
+        //    up = false;
+        //    animator.SetBool("up", up);
+        //}
     }
 
     

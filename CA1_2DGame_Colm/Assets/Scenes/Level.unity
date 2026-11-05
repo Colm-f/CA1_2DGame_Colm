@@ -67521,6 +67521,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Golem
       objectReference: {fileID: 0}
+    - target: {fileID: 8385173425760707694, guid: f823541c12911a64ca8d3c330aad8122, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7774142157392393782, guid: f823541c12911a64ca8d3c330aad8122, type: 3}
     m_RemovedGameObjects: []
@@ -67739,6 +67743,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5577506877931362849, guid: 63c16a2002fb9d0499336f3d9d473fb4, type: 3}
+      propertyPath: m_Resource
+      value: 
+      objectReference: {fileID: 8300000, guid: 11b4564012d89e14ebba817d743061bf, type: 3}
     - target: {fileID: 6697771860730132174, guid: 63c16a2002fb9d0499336f3d9d473fb4, type: 3}
       propertyPath: m_Name
       value: Player
