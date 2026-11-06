@@ -21,18 +21,12 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        //Vector2 position = rb.transform.position;
-        //position.x += direction * Time.deltaTime;
-        //direction *= -1;
-
         distance = Vector2.Distance(this.transform.position, player.transform.position);
 
         if (distance > 1)
         {
             transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
         }
-
-        //animator.SetInteger("direction", direction);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

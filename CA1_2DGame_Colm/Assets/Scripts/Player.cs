@@ -29,8 +29,12 @@ public class Player : MonoBehaviour
     private bool destroy = false;
     private bool isDead = false;
     private float deathTime = 0;
-    private bool down = false;
-    private bool up = false;
+    public AudioClip collectFlameSound;
+    public AudioClip collectOrbSound;
+    public AudioClip healSound;
+    public AudioClip hammerHitSound;
+    public AudioClip flameSound;
+    public AudioClip hitSound;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -44,23 +48,27 @@ public class Player : MonoBehaviour
     {
         playerFlameCount++;
         gm.UpdateFlameScore(playerFlameCount);
+        aSource.PlayOneShot(collectFlameSound);
     }
 
     public void CollectOrb() {
         playerOrbCount++;
         gm.UpdateOrbScore(playerOrbCount);
+        aSource.PlayOneShot(collectOrbSound);
     }
 
     public void Heal() {
         if (!isInvincible) { 
             lives++;
             gm.UpdateLives(lives);
+            aSource.PlayOneShot(healSound);
         }
     }
 
     public void CollectHammer() {
         destroy = true;
         gm.showHammer();
+        aSource.PlayOneShot(hammerHitSound);
     }
 
     private void Fire()
@@ -70,11 +78,13 @@ public class Player : MonoBehaviour
         pro.Launch(new Vector2(-direction, 0), 600);
         playerFlameCount--;
         gm.UpdateFlameScore(playerFlameCount);
+        aSource.PlayOneShot(flameSound);
     }
     private void FireHammer() {
         GameObject go = Instantiate(hammerPrefab, rb.transform.position, Quaternion.identity);
         HammerProjectile pro = go.GetComponent<HammerProjectile>();
         pro.Launch(new Vector2(-direction, 0), 600);
+        aSource.PlayOneShot(hammerHitSound);
     }
 
     // Update is called once per frame
@@ -136,6 +146,7 @@ public class Player : MonoBehaviour
         {
             if (!isInvincible) { 
                 lives--;
+                aSource.PlayOneShot(hitSound);
                 gm.UpdateLives(lives);
                 isInvincible = true;
             }
@@ -148,27 +159,6 @@ public class Player : MonoBehaviour
         inputY = Input.GetAxis("Vertical");
 
         transform.Translate(inputX * speed, inputY * speed, 0f);
-
-        //if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
-        //{
-        //    down = true;
-        //    animator.SetBool("down", down);
-        //}
-        //else
-        //{
-        //    down = false;
-        //    animator.SetBool("up", up);
-        //}
-        //if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
-        //{
-        //    up = true;
-        //    animator.SetBool("up", up);
-        //}
-        //else
-        //{
-        //    up = false;
-        //    animator.SetBool("up", up);
-        //}
     }
 
     

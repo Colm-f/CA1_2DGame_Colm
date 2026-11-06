@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Enemy
   player: {fileID: 0}
-  speed: 3
+  speed: 2
   distance: 0
   strength: 3
 --- !u!50 &8818185626535633098
