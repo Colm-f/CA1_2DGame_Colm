@@ -1,7 +1,4 @@
-using Cainos.PixelArtTopDown_Basic;
-using Mono.Cecil.Cil;
 using UnityEngine;
-using UnityEngine.Windows;
 
 public class Enemy : MonoBehaviour
 {
@@ -11,7 +8,6 @@ public class Enemy : MonoBehaviour
     public float distance;
     private Rigidbody2D rb;
     public int strength = 2;
-    private int direction = 1;
 
     void Start()
     {

@@ -1,10 +1,6 @@
-using Mono.Cecil.Cil;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SceneManagement;
-using UnityEngine.SocialPlatforms.Impl;
-using System;
-using UnityEngine.Rendering;
 
 public class Player : MonoBehaviour
 {
@@ -160,8 +156,4 @@ public class Player : MonoBehaviour
 
         transform.Translate(inputX * speed, inputY * speed, 0f);
     }
-
-    
-
-
 }
