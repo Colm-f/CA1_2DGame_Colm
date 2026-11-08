@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        /*MoreBBlakey. (2022). Unity simple 2D Enemy AI Follow Tutorial [video online]. Available from: https://www.youtube.com/watch?v=2SXa10ILJms [Accessed 20 October 2026].*/
         distance = Vector2.Distance(this.transform.position, player.transform.position);
 
         if (distance > 1)

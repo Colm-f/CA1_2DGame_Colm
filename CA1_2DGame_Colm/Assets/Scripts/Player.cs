@@ -149,6 +149,7 @@ public class Player : MonoBehaviour
         }
     }
 
+    /*Charger Games. (2023). Unity 2D Top Down Player Controller with Keyboard Inputs | Unity C# Scripting Tutorial [video online]. Available from: https://www.youtube.com/shorts/wzPEUkc1BQU [Accessed 17 October 2026].*/
     void FixedUpdate()
     {
         inputX = Input.GetAxis("Horizontal");
